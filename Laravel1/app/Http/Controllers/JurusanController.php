@@ -10,13 +10,17 @@ use Illuminate\Support\Facades\DB;
 class JurusanController extends Controller
 {
     public function index(Request $request){
-        $dataFakultas = Fakultas::all();
-        $dataJurusan = Jurusan::paginate(5);
-        return view('admin.jurusan.jurusan', compact('dataJurusan', 'dataFakultas'));
+        $dataJurusan = Jurusan::when($request->search, function($query) use($request){
+            $query->where('nama_jurusan', 'LIKE', '%'.$request->search.'%')
+                ->orWhere('nama_fakultas', 'LIKE', '%'.$request->search.'%');
+        })->join('fakultas', 'fakultas.id_fakultas', '=', 'jurusan.id_fakultas')
+            ->orderBy('id_jurusan', 'asc')->paginate(3);
+        return view('admin.jurusan.jurusan', compact('dataJurusan'))
+            ->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
     public function create(){
-        $dataFakultas = Fakultas::all();
+        $dataFakultas = Fakultas::all()->sortBy('nama_fakultas');
         return view('admin.jurusan.createJurusan', compact('dataFakultas'));
     }
 
@@ -44,7 +48,7 @@ class JurusanController extends Controller
     public function update($id_jurusan){
         $dataJurusan = Jurusan::all()->where('id_jurusan', '=', $id_jurusan)
                                     ->first();
-        $dataFakultas = Fakultas::all();
+        $dataFakultas = Fakultas::all()->sortBy('nama_fakultas');
         return view('admin.jurusan.updateJurusan', compact('dataJurusan', 'dataFakultas'));
     }
 
@@ -65,27 +69,4 @@ class JurusanController extends Controller
         return redirect('/jurusan');
     }
 
-    public function search(Request $request){
-        $dataFakultas = Fakultas::all();
-        $search = $request->search_jurusan;
-        $searchFakultas = DB::table('fakultas')
-                            ->select('id_fakultas')
-                            ->where('nama_fakultas', 'LIKE', '%'.$search.'%')
-                            ->first();
-
-        if(is_object($searchFakultas)){
-            $src = get_object_vars($searchFakultas);
-            $dataJurusan = DB::table('jurusan')
-                            ->where('id_fakultas', '=', $src)
-                            ->paginate(5);
-
-            return view('admin.jurusan.jurusan', compact('dataJurusan', 'dataFakultas'));
-        } else{
-            $dataJurusan = DB::table('jurusan')
-                            ->where('id_fakultas', '=', null)
-                            ->paginate(5);
-            return view('admin.jurusan.jurusan', compact('dataJurusan', 'dataFakultas'));
-        }
-
-    }
 }

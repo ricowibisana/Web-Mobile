@@ -9,4 +9,10 @@ class PublicController extends Controller
     public function index(){
         return view('welcome');
     }
+    public function login(){
+        return view('auth.login');
+    }
+    public function register(){
+        return view('auth.register');
+    }
 }

@@ -38,10 +38,10 @@
                   <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password">
                 </div>
                 <div class="mt-3">
-                  <a class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" href="../../index.html">SIGN IN</a>
+                  <a class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" href="" type="button">SIGN IN</a>
                 </div>
                <div class="mt-3">
-                  <a class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" href="../../index.html">Register</a>
+                  <a class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" href="{{url('/register')}}">Register</a>
                 </div>
               </form>
             </div>

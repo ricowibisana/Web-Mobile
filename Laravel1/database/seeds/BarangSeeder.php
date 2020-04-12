@@ -1,8 +1,7 @@
 <?php
 
-use Illuminate\Database\Seeder;
 use App\Barang;
-use Faker\Factory as Faker;
+use Illuminate\Database\Seeder;
 
 class BarangSeeder extends Seeder
 {
@@ -13,6 +12,22 @@ class BarangSeeder extends Seeder
      */
     public function run()
     {
-        Factory(App\Barang::class,10)->create();
+        $listBarang = [ 'Meja','Papan Tulis','Remote AC','Proyektor','Kursi','Kursi Meja','Stop Kontak','Spidol','Stop Kontak','Proyektor',
+                        'Remote AC','Speaker','Meja','Papan Tulis','Proyektor','Spidol'];
+        $listTotal = [ '25','1','1','1','15','60','3','2','5','1','1','2','40','1','1','3' ];
+        $listRusak = [ '2' ,'0','0','1','5' ,'6' ,'0','0','4','0','0','0','5' ,'0','1','0' ];
+        $isi = 0;
+        $ruangan = 1;
+
+        foreach ($listBarang as $barang) {
+        	Barang::create([
+                'id_ruang' => $ruangan++,
+                'nama_barang' => $barang,
+                'total_barang' => $listTotal[$isi],
+                'rusak_barang' => $listRusak[$isi++],
+                'created_by' => 1,
+                'updated_by' => rand(1,2)
+                ]);
+        }
     }
 }
