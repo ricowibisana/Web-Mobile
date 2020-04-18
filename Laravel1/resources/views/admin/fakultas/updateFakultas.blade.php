@@ -16,7 +16,7 @@
     </div>
     <!-- /.content-header -->
 
-    <!-- Main content -->
+<!-- Main content -->
     <section class="content">
       <div class="container-fluid">
 
@@ -26,7 +26,7 @@
 
           <section class="col-lg-12 ">
             <!-- Custom tabs (Charts with tabs)-->
-            <div class="card card-primary">
+            <div class="card card-warning">
               <div class="card-header">
                 <h3 class="card-title">Update Data</h3>
 
@@ -52,7 +52,7 @@
                         </div>
                         <div class="form-group">
                             <label>Nama Fakultas</label>
-                            <input type="text" class="form-control" name="nama_fakultas" id="nama_fakultas" placeholder="Masukan Nama Fakultas" value="{{ $dataFakultas->nama_fakultas }}" required>
+                            <input type="text" class="form-control" name="nama_fak" id="nama_fakultas" placeholder="Masukan Nama Fakultas" value="{{ $dataFakultas->nama_fakultas }}" required>
                         </div>
                         <button type="submit" id="button1" class="btn btn-primary"><i class="fas fa-plus-circle"></i> INSERT</button>
                     </div>

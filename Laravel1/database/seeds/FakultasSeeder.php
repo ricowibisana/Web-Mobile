@@ -11,7 +11,7 @@ class FakultasSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
+   {
         $listFakultas = ['Fakultas Ekonomi',
                         'Fakultas Hukum',
                         'Fakultas Ilmu Budaya',
@@ -27,8 +27,9 @@ class FakultasSeeder extends Seeder
                         'Fakultas Kedokteran Hewan',
                         'Fakultas Ilmu Komputer'];
 
+
         foreach ($listFakultas as $fakultas) {
-        	Fakultas::create([
+            Fakultas::create([
                 'nama_fakultas' => $fakultas
                 ]);
         }

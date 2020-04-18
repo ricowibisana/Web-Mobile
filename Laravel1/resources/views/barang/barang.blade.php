@@ -34,7 +34,7 @@
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <button class="btn btn-primary" type="submit">
-                                        <i class="mdi mdi-magnify"></i>
+                                        <i class="mdi mdi-search"></i>
                                     </button>
                                 </div>
                                 <input class="form-control form-control-navbar" type="search" placeholder="Search" name="search" aria-label="Search">
@@ -42,10 +42,12 @@
                                     <a class="btn btn-danger" href="{{ route('barang.barang') }}" style="color: #fff;">SHOW ALL</a>
                                 </div>
                             </div>
+                            @if(auth()->user()->role == "admin")
                             <div style="position: absolute; right: 10px; ">
-                                <a class="btn btn-success" href="#" style="color: #fff"><i class="mdi mdi-file-excel"></i>&nbsp; EXPORT</a>
-                                <a class="btn btn-primary" href="{{ url('/barangCreate') }}" style="color: #fff"><i class="mdi mdi-plus"></i>&nbsp; ADD</a>
+                                <a class="btn btn-success" href="{{ url('/barang_export') }}" style="color: #fff"><i class="mdi mdi-file-excel"></i>&nbsp; EXPORT</a>
+                                <a class="btn btn-primary" href="{{ url('/barang_create') }}" style="color: #fff"><i class="mdi mdi-plus"></i>&nbsp; ADD</a>
                             </div>
+                            @endif
                         </form>
                     </div>
                 </div>
@@ -56,29 +58,37 @@
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">Nama</th>
-                            <th scope="col">Jumlah</th>
+                            <th scope="col">#</th>
+                            <th scope="col">Nama Ruangan</th>
+                            <th scope="col">Nama Barang</th>
+                            <th scope="col">Total</th>
+                            <th scope="col">Rusak</th>
+                            <th scope="col">Created by</th>
+                            <th scope="col">Updated by</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse($dataBarang as $barang)
+                        @forelse($dataBarang as $r => $barang )
                             <tr>
-                                <td>{{ $barang->id_barang }}</td>
+                                <td>{{ $dataBarang->firstItem()+$r }}</td>
+                                <td>{{ $barang->ruangan->nama_ruang }}</td>
                                 <td>{{ $barang->nama_barang }}</td>
-                                <td>{{ $barang->jumlah_barang }}</td>
+                                <td>{{ $barang->total_barang }}</td>
+                                <td>{{ $barang->rusak_barang }}</td>
+                                <td>{{ $barang->user_c->name }}</td>
+                                <td>{{ $barang->user_u->name }}</td>
                                 <td>
-                                    <a class="btn btn-info" name="btn-update" href="{{ url('/barangUpdate'. $barang->id_barang) }}"> 
-                                    <i class="mdi mdi-pencil"></i></a>
-                                    <a class="btn btn-danger" name="btn-delete" href="{{ url('/barangDelete'. $barang->id_barang) }}" onclick="return confirm('Yakin ingin menghapus data barang {{ $barang->nama_fakultas}}?')"> 
-                                    <i class="mdi mdi-delete"></i></a>
+                                    <a class="btn btn-info" name="btn-update" href="{{ url('/barang_update/'. $barang->id_barang) }}"> <i class="fas fa-pen"></i></a>
+                                    @if(auth()->user()->role == "admin")
+                                        <a class="btn btn-danger" name="btn-delete" href="{{ url('/barang_delete/'. $barang->id_barang) }}" onclick="return confirm('Yakin ingin menghapus data Barang {{ $barang->nama_barang}}?')"> <i class="fas fa-trash"></i></a>
+                                    @endif
                                 </td>
                             </tr>
 
                         @empty
                             <tr>
-                                <td colspan="3"><center>Data kosong</center></td>
+                                <td colspan="8"><center>Data kosong</center></td>
                             </tr>
                         @endforelse
                     </tbody>

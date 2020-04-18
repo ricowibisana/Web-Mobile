@@ -12,26 +12,23 @@ class JurusanSeeder extends Seeder
      */
     public function run()
     {
-        $listJurusan = ['Ilmu Hukum',
-                        'Pendidikan MIPA',
-                        'Administrasi Bank',
+        $listJurusan = ['Ekonomi Internasional',
+                        'Hukum Tata Negara',
+                        'Ilmu Sejarah',
                         'Agroteknologi',
-                        'Pertanian',
+                        'Ilmu Ekonomi Peternakan',
                         'Arsitektur',
                         'Ilmu Gizi',
                         'Perikanan',
                         'Matematika',
-                        'Bioteknologi',
+                        'Perhotelan',
                         'Hubungan Internasional',
                         'Sastra Jepang',
                         'Pendidikan Dokter Hewan',
-                        'Sistem Informasi',
-                        'Kedokteran Gigi',
-                        'D3 Teknik Mesin'];
+                        'Sistem Informasi'];
         $fakultas = 1;
-
         foreach ($listJurusan as $jurusan) {
-        	Jurusan::create([
+            Jurusan::create([
                 'id_fakultas' => $fakultas++,
                 'nama_jurusan' => $jurusan
                 ]);

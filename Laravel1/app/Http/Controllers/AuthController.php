@@ -8,11 +8,11 @@ use Illuminate\Http\Request;
 class AuthController extends Controller
 {
     public function login(){
-    	return view('auth.login');
+        return view('auth.login');
     }
 
     public function register(){
-    	return view('auth.register');
+        return view('auth.register');
     }
 
     public function postRegister(Request $request){
@@ -23,23 +23,20 @@ class AuthController extends Controller
             'role' => $request->role
         ]);
 
-    	return view('auth.login');
+        return view('auth.login');
     }
     public function postLogin(Request $request){
-    	if(Auth::attempt($request->only('email','password'))){
+        if(Auth::attempt($request->only('email','password'))){
 
-            if( auth()->user()->role == 'staff' ){
-                return redirect('/barangStaff');
-            } elseif( auth()->user()->role == 'admin' ){
-                return redirect('/');
-            }
+            return redirect('/');
+
         }
-    	// Message salah
-    	return redirect('/login')->with('errors', 'Username atau Password anda Salah!');
+        // Message salah
+        return redirect('/login')->with('errors', 'Username atau Password anda Salah!');
     }
 
     public function logout(){
-    	Auth::logout();
-    	return redirect('/login');
+        Auth::logout();
+        return redirect('/login');
     }
 }

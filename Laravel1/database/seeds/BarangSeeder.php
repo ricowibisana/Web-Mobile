@@ -12,15 +12,27 @@ class BarangSeeder extends Seeder
      */
     public function run()
     {
-        $listBarang = [ 'Meja','Papan Tulis','Remote AC','Proyektor','Kursi','Kursi Meja','Stop Kontak','Spidol','Stop Kontak','Proyektor',
-                        'Remote AC','Speaker','Meja','Papan Tulis','Proyektor','Spidol'];
-        $listTotal = [ '25','1','1','1','15','60','3','2','5','1','1','2','40','1','1','3' ];
-        $listRusak = [ '2' ,'0','0','1','5' ,'6' ,'0','0','4','0','0','0','5' ,'0','1','0' ];
+        $listBarang = [ 'Meja',
+        'Papan Tulis',
+        'Remote AC',
+        'Proyektor',
+        'Kursi',
+        'Kursi Meja',
+        'Stop Kontak',
+        'Spidol',
+        'Stop Kontak',
+        'Proyektor',
+        'Remote AC',
+        'Speaker',
+        'Meja',
+        'Papan Tulis'];
+        $listTotal = [ '25','1','1','1','15','60','3','2','5','1','1','2','40','1' ];
+        $listRusak = [ '2' ,'0','0','1','5' ,'6' ,'0','0','4','0','0','0','5' ,'0'];
         $isi = 0;
         $ruangan = 1;
 
         foreach ($listBarang as $barang) {
-        	Barang::create([
+            Barang::create([
                 'id_ruang' => $ruangan++,
                 'nama_barang' => $barang,
                 'total_barang' => $listTotal[$isi],

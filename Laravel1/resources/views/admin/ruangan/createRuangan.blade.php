@@ -44,7 +44,7 @@
                 </div>
                 @endif
 
-                <form method="post" action="{{ url('/ruanganStore') }}" autocomplete="off" enctype="multipart/form-data">
+                <form method="post" action="{{ url('/ruangan_store') }}" autocomplete="off" enctype="multipart/form-data">
                 @csrf
                     <div class="col-md-6">
                         <div class="form-group">

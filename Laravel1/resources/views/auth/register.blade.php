@@ -30,27 +30,31 @@
               </div>
               <h4>New here?</h4>
               <h6 class="font-weight-light">Signing up is easy. It only takes a few steps</h6>
-               <form action="{{ url('postRegister') }}" method="post">
-              <form class="pt-3">
+              <form class="pt-3" action="{{ url('postRegister') }}" method="post">
+                  @csrf
                 <div class="form-group">
-                  <input type="text" class="form-control form-control-lg" id="exampleInputUsername1" placeholder="Username">
+                  <input type="text" class="form-control form-control-lg" id="name" placeholder="Username" name="name">
                 </div>
                 <div class="form-group">
-                  <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Email">
+                  <input type="text" class="form-control form-control-lg" id="email" placeholder="Email" name="email">
                 </div>
                 <div class="form-group">
-                  <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password">
-                </div>
-                <div class="mb-4">
-                  <div class="form-check">
-                    <label class="form-check-label text-muted">
-                      <input type="checkbox" class="form-check-input">
-                      I agree to all Terms & Conditions
-                    </label>
-                  </div>
+                  <input type="password" class="form-control form-control-lg" id="password" placeholder="Password" name="password">
                 </div>
                 <div class="mt-3">
-                  <a class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">SIGN UP</a>
+                  <div class="input-group mb-3">
+            <select class="form-control" id="role" name="role">
+                <option value="" hidden> Role </option>
+                <option value="admin">Admin</option>
+                <option value="staff">Staff</option>
+            </select>
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-hashtag"></span>
+              </div>
+            </div>
+        </div>
+                  <button class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" type="submit" id="submit">Register</button>
                 </div>
                 <div class="text-center mt-4 font-weight-light">
                   Already have an account? <a href="{{url('/login')}}" class="text-primary">Login</a>

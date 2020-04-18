@@ -26,7 +26,7 @@
 
           <section class="col-lg-12 ">
             <!-- Custom tabs (Charts with tabs)-->
-            <div class="card card-primary">
+            <div class="card card-danger">
               <div class="card-header">
                 <h3 class="card-title">Update Data</h3>
 
@@ -44,19 +44,38 @@
                 </div>
                 @endif
 
-                <form method="post" action="{{ url('/barangUpdateStore/' . $dataBarang->id_barang) }}" autocomplete="off" enctype="multipart/form-data">
+                <form method="post" action="{{ url('/barang_update_store/' . $dataBarang->id_barang) }}" autocomplete="off" enctype="multipart/form-data">
                 @csrf
                     <div class="col-md-6">
                         <div class="form-group">
                             <input type="text" class="form-control" name="id_barang" id="id_barang" placeholder="Masukan Nama Barang" value="{{ $dataBarang->id_barang }}" hidden>
                         </div>
                         <div class="form-group">
+                            <label>Nama Ruangan</label>
+                            <select class="form-control" id="id_ruang" name="id_ruang">
+                                <option value="" hidden> -- Pilih Ruangan -- </option>
+                                @foreach($dataRuangan as $rua)
+                                    <option value="{{ $rua->id_ruang }}" {{ ($dataBarang->id_ruang == $rua->id_ruang) ? 'selected' : ''}} >{{ $rua->jurusan->nama_jurusan .' - '. $rua->nama_ruang }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label>Nama Barang</label>
                             <input type="text" class="form-control" name="nama_barang" id="nama_barang" placeholder="Masukan Nama Barang" value="{{ $dataBarang->nama_barang }}" required>
                         </div>
                         <div class="form-group">
-                            <label>Jumlah Barang</label>
-                            <input type="text" class="form-control" name="jumlah_barang" id="jumlah_barang" placeholder="Masukan Nama Jumlah" value="{{ $dataBarang->jumlah_barang }}" required>
+                            <label>Total Barang</label>
+                            <input type="number" class="form-control" name="total_barang" id="total_barang" placeholder="Masukan Jumlah Barang" value="{{ $dataBarang->total_barang }}" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Barang Rusak</label>
+                            <input type="number" class="form-control" name="rusak_barang" id="rusak_barang" placeholder="Masukan Jumlah Barang Rusak" value="{{ $dataBarang->rusak_barang }}" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="created_by" id="created_by" value="{{ $dataBarang->created_by }}" hidden>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="updated_by" id="updated_by" value="{{ auth()->user()->id }}" hidden>
                         </div>
                         <button type="submit" id="button1" class="btn btn-primary"><i class="fas fa-plus-circle"></i> INSERT</button>
                     </div>

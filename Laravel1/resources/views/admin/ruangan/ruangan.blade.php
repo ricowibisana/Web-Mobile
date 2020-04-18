@@ -44,7 +44,7 @@
                             </div>
                             <div style="position: absolute; right: 10px; ">
                                 <a class="btn btn-success" href="#" style="color: #fff"><i class="mdi mdi-file-excel"></i>&nbsp; EXPORT</a>
-                                <a class="btn btn-primary" href="{{ url('/ruanganCreate') }}" style="color: #fff"><i class="mdi mdi-plus"></i>&nbsp; ADD</a>
+                                <a class="btn btn-primary" href="{{ url('/ruangan_create') }}" style="color: #fff"><i class="mdi mdi-plus"></i>&nbsp; ADD</a>
                             </div>
                         </form>
                     </div>
@@ -71,8 +71,10 @@
                                 </td>
                                 <td>{{ $ruangan->nama_ruang }}</td>
                                 <td>
-                                    <a class="btn btn-info" name="btn-update" href="{{ url('/ruanganUpdate'. $ruangan->id_ruang) }}"> <i class="fas fa-pen"></i></a>
-                                    <a class="btn btn-danger" name="btn-delete" href="{{ url('/ruanganDelete'. $ruangan->id_ruang) }}" onclick="return confirm('Yakin ingin menghapus data Ruangan {{ $ruangan->nama_ruang}}?')"> <i class="fas fa-trash"></i></a>
+                                    <a class="btn btn-info" name="btn-update" href="{{ url('/ruangan_update'. $ruangan->id_ruang) }}"> 
+                                    <i class="mdi mdi-pencil"></i></a>
+                                    <a class="btn btn-danger" name="btn-delete" href="{{ url('/ruangan_delete'. $ruangan->id_ruang) }}" onclick="return confirm('Yakin ingin menghapus data Ruangan {{ $ruangan->nama_ruang}}?')">
+                                     <i class="mdi mdi-delete"></i></a>
                                 </td>
                             </tr>
 
@@ -83,6 +85,7 @@
                         @endforelse
                     </tbody>
                 </table>
+                {{ $dataRuangan->links() }}
               </div><!-- /.card-body -->
             </div>
             <!-- /.card -->

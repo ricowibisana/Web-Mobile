@@ -30,21 +30,21 @@
               <div class="card-header">
                 <div class="col-md-12">
                     <div class="col-md-12">
-                        <form class="form-inline" method="GET" style="position: relative" action="{{ url('/jurusanSearch') }}">
+                        <form class="form-inline" method="GET" style="position: relative" action="{{ url('/jurusan') }}">
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <button class="btn btn-primary" type="submit">
                                         <i class="mdi mdi-magnify"></i>
                                     </button>
                                 </div>
-                                <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search" name="search_jurusan">
+                                <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search" name="search">
                                 <div class="input-group-append">
                                     <a class="btn btn-danger" href="{{ route('jurusan.jurusan') }}" style="color: #fff;">SHOW ALL</a>
                                 </div>
                             </div>
                             <div style="position: absolute; right: 10px; ">
                                 <a class="btn btn-success" href="#" style="color: #fff"><i class="mdi mdi-file-excel"></i>&nbsp; EXPORT</a>
-                                <a class="btn btn-primary" href="{{ url('/jurusanCreate') }}" style="color: #fff"><i class="mdi mdi-plus"></i>&nbsp; ADD</a>
+                                <a class="btn btn-primary" href="{{ url('/jurusan_create') }}" style="color: #fff"><i class="mdi mdi-plus"></i>&nbsp; ADD</a>
                             </div>
                         </form>
                     </div>
@@ -71,9 +71,9 @@
                                 </td>
                                 <td>{{ $jurusan->nama_jurusan }}</td>
                                 <td>
-                                    <a class="btn btn-info" name="btn-update" href="{{ url('/jurusanUpdate'. $jurusan->id_jurusan) }}"> 
+                                    <a class="btn btn-info" name="btn-update" href="{{ url('/jurusan_update/'. $jurusan->id_jurusan) }}"> 
                                     <i class="mdi mdi-pencil"></i></a>
-                                    <a class="btn btn-danger" name="btn-delete" href="{{ url('/jurusanDelete'. $jurusan->id_jurusan) }}" onclick="return confirm('Yakin ingin menghapus data Jurusan {{ $jurusan->nama_jurusan}}?')"> 
+                                    <a class="btn btn-danger" name="btn-delete" href="{{ url('/jurusan_delete/'. $jurusan->id_jurusan) }}" onclick="return confirm('Yakin ingin menghapus data Jurusan {{ $jurusan->nama_jurusan}}?')"> 
                                     <i class="mdi mdi-delete"></i></a>
                                 </td>
                             </tr>

@@ -8,7 +8,7 @@ class Barang extends Model
 {
     public $table = 'barang';
     protected $primaryKey = 'id_barang';
-    protected $fillable = ['id_ruang', 'nama_barang', 'total_barag', 'rusak_barang', 'created_by', 'updated_by'];
+    protected $fillable = ['id_ruang', 'nama_barang', 'total_barang', 'rusak_barang', 'created_by', 'updated_by'];
 
     public function ruangan(){
     	return $this->belongsTo('App\Ruangan', 'id_ruang');

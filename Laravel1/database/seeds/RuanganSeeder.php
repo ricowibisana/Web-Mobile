@@ -11,7 +11,7 @@ class RuanganSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
+   {
         $listRuangan = ['HKM_001',
                         'PM_002',
                         'ADB_003',
@@ -25,12 +25,11 @@ class RuanganSeeder extends Seeder
                         'SJP_011',
                         'PDH_012',
                         'SI_013',
-                        'KG_014',
-                        'TM_015'];
+                        'KG_014'];
         $jurusan = 1;
 
         foreach ($listRuangan as $ruangan) {
-        	Ruangan::create([
+            Ruangan::create([
                 'id_jurusan' => $jurusan++,
                 'nama_ruang' => $ruangan
                 ]);
