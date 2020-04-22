@@ -63,6 +63,7 @@
                             <th scope="col">Nama Barang</th>
                             <th scope="col">Total</th>
                             <th scope="col">Rusak</th>
+                            <th scope="col">Foto</th>
                             <th scope="col">Created by</th>
                             <th scope="col">Updated by</th>
                             <th scope="col">Action</th>
@@ -76,6 +77,12 @@
                                 <td>{{ $barang->nama_barang }}</td>
                                 <td>{{ $barang->total_barang }}</td>
                                 <td>{{ $barang->rusak_barang }}</td>
+
+                                <td>
+                                    <center><img src="{{ url('img/'.$barang->foto) }}" style="width: 70px; height: 70px; object-fit: cover;" /></center>
+                                </td>
+
+
                                 <td>{{ $barang->user_c->name }}</td>
                                 <td>{{ $barang->user_u->name }}</td>
                                 <td>

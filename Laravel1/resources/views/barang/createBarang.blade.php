@@ -68,6 +68,12 @@
                             <label>Barang Rusak</label>
                             <input type="number" class="form-control" name="rusak_barang" id="rusak_barang" placeholder="Masukan Jumlah Barang Rusak" required>
                         </div>
+
+                        <div class="form-group">
+                            <label>Foto</label><br>
+                            <input type="file" name="foto" id="foto" accept=".jpg, .png, .jpeg">
+                        </div>
+                        
                         <div class="form-group">
                             <input type="text" class="form-control" name="created_by" id="created_by" value="{{ auth()->user()->id  }}" hidden>
                         </div>
