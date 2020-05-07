@@ -99,4 +99,29 @@
   </div>
   <!-- /.content-wrapper -->
 
+<!-- IMPORT Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <form method="post" action="{{ url('/fakultas_import') }}" autocomplete="off" enctype="multipart/form-data">
+                            @csrf
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Import Data Fakultas</h5>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label>File Excel</label><br>
+                                        <input type="file" name="excel" id="excel" accept=".xlsx" required>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+                                    <button class="btn btn-primary" type="submit">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            <!-- End IMPORT Modal -->
+
 @stop

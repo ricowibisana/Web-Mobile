@@ -109,6 +109,20 @@
         </ul>
       </nav> 
 
+      <li class="nav-item">
+            <a class="nav-link" href="{{ url('sendemail') }}">
+              <i class="mdi mdi-dropbox menu-icon"></i>
+              <span class="menu-title">Send Email</span>
+            </a>
+          </li>
+
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
   @yield('content')
 
 
